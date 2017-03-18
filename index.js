@@ -3,7 +3,7 @@ const parse = require('yeps-body');
 
 module.exports = () => async context => {
 
-    debug();
+    debug('Body parser created');
 
     let body = {};
 
