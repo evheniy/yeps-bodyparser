@@ -1,14 +1,14 @@
 const debug = require('debug')('yeps:bodyparser');
 const parse = require('yeps-body');
 
-module.exports = () => async context => {
+module.exports = (opts = {}) => async context => {
 
     debug('Body parser created');
 
     let body = {};
 
     try {
-        body = await parse(context.req);
+        body = await parse(context.req, opts);
     } catch (error) {
         debug(error);
 

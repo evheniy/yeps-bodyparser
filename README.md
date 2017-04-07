@@ -30,9 +30,11 @@ Parse request bodies
     const App = require('yeps');
     const bodyparser = require('yeps-bodyparser');
     const app = new App();
+
+    const options = {};
     
     app.all([
-        bodyparser()
+        bodyparser(options)
     ]);
     
     app.then(async ctx => {
@@ -41,6 +43,27 @@ Parse request bodies
         ctx.res.end(JSON.stringify(ctx.request.body));
     
     });
+
+## Options
+
+  * `limit` - the limit in bytes
+  * `length` and `expected` - the expected length of the stream
+  * `received` - the received bytes
+  * `encoding` - the invalid encoding
+  * `status` and `statusCode` - the corresponding status code for the error
+  * `type` - the error type
+  
+Example:
+
+    const options = {
+        limit: '1mb'
+    };
+    
+    app.all([
+        bodyparser(options)
+    ]);
+  
+See [raw-body](https://github.com/stream-utils/raw-body) to get more details
                 
 ## Links
 
