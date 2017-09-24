@@ -16,6 +16,29 @@ describe('YEPS bodyparser test', async () => {
         app.then(bodyParser());
     });
 
+    it('should test request without body', async () => {
+        let isTestFinished1 = false;
+        let isTestFinished2 = false;
+
+        app.then(async ctx => {
+            isTestFinished1 = true;
+
+            ctx.res.statusCode = 200;
+            ctx.res.end();
+        });
+
+        await chai.request(http.createServer(app.resolve()))
+            .get('/')
+            .send()
+            .then(res => {
+                expect(res).to.have.status(200);
+                isTestFinished2 = true;
+            });
+
+        expect(isTestFinished1).is.true;
+        expect(isTestFinished2).is.true;
+    });
+
     it('should parse valid form body', async () => {
         let isTestFinished1 = false;
         let isTestFinished2 = false;
@@ -30,7 +53,7 @@ describe('YEPS bodyparser test', async () => {
         await chai.request(http.createServer(app.resolve()))
             .post('/')
             .type('form')
-            .send({ foo: { bar: 'baz' }})
+            .send({ foo: { bar: 'baz' } })
             .then(res => {
                 expect(res).to.have.status(200);
                 expect(res.text).to.be.equal('{"foo":{"bar":"baz"}}');
@@ -246,6 +269,7 @@ describe('YEPS bodyparser test', async () => {
         });
 
         const res = await request;
+
         expect(res).to.have.status(200);
         expect(res.text).to.be.equal('{"foo":"bar"}');
 
@@ -284,6 +308,7 @@ describe('YEPS bodyparser test', async () => {
         });
 
         const res = await request;
+
         expect(res).to.have.status(200);
         expect(res.text).to.be.equal('{"foo":"bar"}');
 

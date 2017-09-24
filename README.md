@@ -65,16 +65,4 @@ Example:
   
 See [raw-body](https://github.com/stream-utils/raw-body) to get more details
                 
-## Links
-
-* [yeps](https://github.com/evheniy/yeps) - YEPS
-* [yeps-promisify](https://github.com/evheniy/yeps-promisify) - YEPS kernel
-* [yeps-benchmark](https://github.com/evheniy/yeps-benchmark) - performance comparison koa2, express and node http
-* [yeps-router](https://github.com/evheniy/yeps-router) - YEPS promise based router
-* [yeps-error](https://github.com/evheniy/yeps-error) - YEPS 404/500 error handler
-* [yeps-redis](https://github.com/evheniy/yeps-redis) - YEPS promise based redis client
-* [yeps-mysql](https://github.com/evheniy/yeps-mysql) - YEPS promise based mysql client
-* [yeps-boilerplate](https://github.com/evheniy/yeps-boilerplate) - YEPS app boilerplate
-* [yeps-express-wrapper](https://github.com/evheniy/yeps-express-wrapper) - YEPS express wrapper
-* [yeps-cors](https://github.com/evheniy/yeps-cors) - YEPS CORS
-* [yeps-body](https://github.com/evheniy/yeps-body) - YEPS body parser
+#### [YEPS documentation](http://yeps.info/)
