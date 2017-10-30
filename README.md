@@ -23,26 +23,34 @@ Parse request bodies
 
 ## How to install
 
-  npm i -S yeps-bodyparser
+    npm i -S yeps-bodyparser
   
 ## How to use
 
     const App = require('yeps');
+    
+    const error = require('yeps-error');
+    const logger = require('yeps-logger');
+    const server = require('yeps-server');
+    
     const bodyparser = require('yeps-bodyparser');
+    
     const app = new App();
 
     const options = {};
     
     app.all([
-        bodyparser(options)
+        error(),
+        logger(),
+        bodyparser(options),
     ]);
     
-    app.then(async ctx => {
-        
+    app.then(async (ctx) => {
         ctx.res.statusCode = 200;
         ctx.res.end(JSON.stringify(ctx.request.body));
-    
     });
+    
+    server.createHttpServer(app);
 
 ## Options
 
@@ -56,11 +64,11 @@ Parse request bodies
 Example:
 
     const options = {
-        limit: '1mb'
+        limit: '1mb',
     };
     
     app.all([
-        bodyparser(options)
+        bodyparser(options),
     ]);
   
 See [raw-body](https://github.com/stream-utils/raw-body) to get more details
